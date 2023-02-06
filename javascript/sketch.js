@@ -6,22 +6,44 @@ var g;
 var b;
 var a;
 
+let imgA;
+let imgB;
+let imgC;
+
 let displayState = 0;
+
+function preload() {
+  imgA = loadImage("Image/E01.jpeg");
+  imgB = loadImage("Image/E02.jpeg");
+  imgC = loadImage("Image/E03.jpeg");
+  
+}
 
 function setup() {
   // canvas = createCanvas(windowWidth, windowHeight);
   canvas = createCanvas(400, 400);
   canvas.parent("sketch-container");
-
   addGUI();
+  document.oncontextmenu = () => false;
+  background(255);
 }
 
 function draw() {
+  imgC.resize(400, 534);
 
+  if(displayState == 0){
+    drawP()
+  }else{
+    image(imgC, 0, 0);
+  }
+
+
+
+}
+function drawP() {
+  let sw = slider.value();
   background(0,150,200);//sky
 
-  let sw = slider.value();
-  
   fill(33,35,36,sw)
   quad(0,0,400,0,400,400,0,400)//NIGHT SKY	
   
@@ -82,17 +104,18 @@ function draw() {
   fill(230,230,230,sw)
   ellipse(sw*1,50,60,60)// Moon  
 
-}
+  
 
+}
 function addGUI() {
   slider = createSlider(0, 255, 100);
   slider.addClass("slider");
   slider.parent("gui-container");
 
   if (displayState == 0) {
-    button = createButton("Change to Rect");
+    button = createButton("Change to PHOTO");
   }else{
-    button = createButton("Change to Line");
+    button = createButton("Change to ANIME");
   }
   button.addClass("button");
   button.parent("gui-container");
@@ -103,17 +126,21 @@ function handleButtonPress(){
   if(displayState < 1)
   {
     displayState++;
-    background(255);
+    //background(255);
+    
   }else{
     displayState = 0;
-    background(255);
+    //background(255);
+    
   }
 
   if(displayState == 0)
   {
-      button.html("Change to Rect");
+      button.html("Change to PHOTO");
+      //drawP()
   }else if(displayState == 1){
-      button.html("Change to Line");
+      button.html("Change to ANIME");
+      //image(imgC, 0, 0);
   }
 }
 
