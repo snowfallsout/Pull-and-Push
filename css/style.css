@@ -36,8 +36,8 @@ main{
 
 /*styled button */
 .button{
-  background-color: #371bd3;
-  border: solid 1px #371bd3;
+  background-color: #f6c627;
+  border: solid 1px #f6c627;
   border-radius: 10px;
   color: white;
   padding: 15px 20px;
@@ -49,8 +49,8 @@ main{
   cursor: pointer;
 }
 .button:hover{
-  background-color:white;
-  color: #371bd3;
+  background-color:rgba(255, 226, 36, 0.598);
+  color: #3a3a3a;
 }
 
 /*styled slider */
@@ -71,7 +71,7 @@ main{
   width: 25px;
   height: 25px;
   border-radius: 50%; 
-  background: #371bd3;
+  background: #3a3a3a;
   cursor: pointer;
 }
 
@@ -79,7 +79,7 @@ main{
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #371bd3;
+  background: #3a3a3a;
   cursor: pointer;
 }
 

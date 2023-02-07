@@ -16,6 +16,7 @@ function preload() {
   imgA = loadImage("Image/E01.jpeg");
   imgB = loadImage("Image/E02.jpeg");
   imgC = loadImage("Image/E03.jpeg");
+  imgD = loadImage("Image/E04.jpeg");
   
 }
 
@@ -32,24 +33,18 @@ function draw() {
   imgC.resize(400, 534);
   imgB.resize(400, 534);
   imgA.resize(400, 534);
-
+  imgD.resize(400, 534);
+  
   if(displayState == 0){
     drawP()
-  }else{
-    image(imgC, 0, 0);
-  }
-
-  if(displayState == 1)
-{
-    image(imgC, 0, 0);
+  }else if(displayState == 1){
+    image(imgC, 0, -30);
   }else if(displayState == 2){
-    image(imgB, 0, 0);
-  }
-  if(displayState == 2)
-{
-    image(imgB, 0, 0);
+    image(imgB, 0, -50);
   }else if(displayState == 3){
     image(imgA, 0, 0);
+  }else if(displayState == 4){
+    image(imgD, 0, -50);
   }
 }
 
@@ -137,7 +132,7 @@ function addGUI() {
 }
 
 function handleButtonPress(){
-  if(displayState < 3)
+  if(displayState < 4)
   {
     displayState++;
     //background(255);
@@ -153,28 +148,23 @@ function handleButtonPress(){
       //drawP()
   }else if(displayState == 1){
       button.html("Change to PHOTO 2");
-      image(imgC, 0, 0);
-  }
-
-  if(displayState == 1)
-  {
-      button.html("Change to PHOTO 2");
+      //image(imgC, 0, 0);
   }else if(displayState == 2){
-      button.html("Change to PHOTO 1");
-      image(imgB, 0, 0);
-  }
-  if(displayState == 2)
-  {
       button.html("Change to PHOTO 3");
+      //image(imgB, 0, 0);
   }else if(displayState == 3){
-      button.html("Change to ANIME");
-      image(imgA, 0, 0);
-  }
+      button.html("Change to PHOTO 4");
+      i//mage(imgA, 0, 0);
+  }else if(displayState == 4){
+    button.html("Change to ANIME");
+    //image(imgD, 0, 0);
+}
+
 }
 
 function windowResized() {
 
   // resizeCanvas(windowWidth, windowHeight);
-  resizeCanvas(400, 400);
+  resizeCanvas(800, 800);
 
 }
