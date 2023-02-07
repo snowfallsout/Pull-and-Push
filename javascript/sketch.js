@@ -30,6 +30,8 @@ function setup() {
 
 function draw() {
   imgC.resize(400, 534);
+  imgB.resize(400, 534);
+  imgA.resize(400, 534);
 
   if(displayState == 0){
     drawP()
@@ -37,9 +39,21 @@ function draw() {
     image(imgC, 0, 0);
   }
 
-
-
+  if(displayState == 1)
+{
+    image(imgC, 0, 0);
+  }else if(displayState == 2){
+    image(imgB, 0, 0);
+  }
+  if(displayState == 2)
+{
+    image(imgB, 0, 0);
+  }else if(displayState == 3){
+    image(imgA, 0, 0);
+  }
 }
+
+
 function drawP() {
   let sw = slider.value();
   background(0,150,200);//sky
@@ -57,7 +71,7 @@ function drawP() {
   
   strokeWeight(5);// Left Cloud
   noStroke(230);
-  fill(255,255,255,sw*-1);
+  fill(255,255,255,sw*-2);
   ellipse(114,113,80,30);
   ellipse(65,128,50,30);
   ellipse(128,100,30,20);
@@ -89,20 +103,20 @@ function drawP() {
   fill(61,55,53,sw)
   triangle(110,100,200,269,210,320)// NIGHT right side of triangle 3D left
     
-  strokeWeight(5);//right Cloud
-  noStroke(230);
-  fill(255,255,255,sw*-1);
-  ellipse(314,83,80,30);
-  ellipse(270,98,50,30);
-  ellipse(342,75,30,20);
-  ellipse(343,100,50,30);
-  ellipse(311,105,70,40);
+  // strokeWeight(5);//right Cloud
+  // noStroke(230);
+  // fill(255,255,255,sw);
+  // ellipse(314,83,80,30);
+  // ellipse(270,98,50,30);
+  // ellipse(342,75,30,20);
+  // ellipse(343,100,50,30);
+  // ellipse(311,105,70,40);
     
   fill(245,198,27)
-  ellipse(sw,50,60,60)// Sun
+  ellipse(sw*1.6,50,60,60)// Sun
     
   fill(230,230,230,sw)
-  ellipse(sw*1,50,60,60)// Moon  
+  ellipse(sw*1.6,50,60,60)// Moon  
 
   
 
@@ -113,9 +127,9 @@ function addGUI() {
   slider.parent("gui-container");
 
   if (displayState == 0) {
-    button = createButton("Change to PHOTO");
+    button = createButton("Change to PHOTO 1");
   }else{
-    button = createButton("Change to ANIME");
+    button = createButton("Change to PHOTO 2");
   }
   button.addClass("button");
   button.parent("gui-container");
@@ -123,7 +137,7 @@ function addGUI() {
 }
 
 function handleButtonPress(){
-  if(displayState < 1)
+  if(displayState < 3)
   {
     displayState++;
     //background(255);
@@ -131,16 +145,30 @@ function handleButtonPress(){
   }else{
     displayState = 0;
     //background(255);
-    
   }
 
   if(displayState == 0)
   {
-      button.html("Change to PHOTO");
+      button.html("Change to PHOTO 1");
       //drawP()
   }else if(displayState == 1){
+      button.html("Change to PHOTO 2");
+      image(imgC, 0, 0);
+  }
+
+  if(displayState == 1)
+  {
+      button.html("Change to PHOTO 2");
+  }else if(displayState == 2){
+      button.html("Change to PHOTO 1");
+      image(imgB, 0, 0);
+  }
+  if(displayState == 2)
+  {
+      button.html("Change to PHOTO 3");
+  }else if(displayState == 3){
       button.html("Change to ANIME");
-      //image(imgC, 0, 0);
+      image(imgA, 0, 0);
   }
 }
 
